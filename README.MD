@@ -26,6 +26,8 @@
 ### # Initialize npm
 
     npm init -y
+### Initialize Jest (optional)
+    jest --init
 
 ### # Install jest and puppeteer
 
@@ -51,20 +53,75 @@
 
 ### # Create jest-puppeteer.config.js
 
+        module.exports = {
+        launch: {
+            headless: false, // Enable UI mode
+            // slowMo: 250, // slow down by 250ms
+
+
+            // headless: process.env.HEADLESS !== 'false',
+            // slowMo: process.env.SLOWMO ? process.env.SLOWMO : 0,
+            // devtools: true  // Enable devtools
+
+            // PUPPETEER_PRODUCT=firefox npm install
+            // product: 'chrome',  // Launch chrome browser
+            // product: 'firefox', // Launch firefox browser
+            // ignoreHTTPSErrors: true, // Ignore HTTPS errors during navigation
+            // executablePath: "/Applications/Google Chrome", // Path to a browser executable 
+
+            // args: ['--window-size=1920,1080'], // Browser windowsize
+            args: ['--start-maximized'], // Browser windowsize
+            // args: ['--start-fullscreen'], // Browser windowsize
+            
+            defaultViewport: null, //  Ignore default viewport size
+            // defaultViewport: {width:1920,height:1080}, // viewport for each page. Defaults to an 800x600 viewport.
+            // defaultViewport: '1120x1680', //  viewport for each page. Defaults to an 800x600 viewport.  ??
+            // width: '100', // page width in pixels.    ??
+            // height: '100', // page height in pixels.  ??
+            // timeout: 60000, // timeout in ms //Maximum time in milliseconds to wait for the browser instance to start. Defaults to 30000 (30 seconds). Pass 0 to disable timeout.
+
+            // , //
+            // , //
+            // , //
+
+
+            
+        }
+    }
+
 ### # Add the following section to your package.json:
 
     {
     "scripts": {
-        "test": "jest"
+        "test": "jest" // shows only summary report
+        "test": "jest --verbose" // for showing details of every tests   or verbose: true,  in jest.config.json
+        "test": "jest   && allure serve"  // run test with allure report
+        "test": "jest -w 1  "  // run tests sequentially
+        "test": "jest -w 1  && allure serve"  // run tests sequentially and with allure report
     }
     }
 
-### # Run Tests
-    npm run test
+## # Run Test Commands
+#### Run all tests
+    npm test or npm run test 
+    npm run test:au // for custom tests , run word is mendatory
+#### Run single test
+    Jest <path_of_the_test_file>
+    e.g.  jest tests/demo1.test.js
+#### Run tests sequentially 
+    npm test -- --runInBand
+    jest -w 1 or jest --maxWorkers 1  [In package.json> test]
+
+
 
 
 ### # Add Allure Report
     npm install --save-dev jest-allure
+
+### # Uses Jest-circus or jest -v >27 ?
+Jest-allure doesn't support jest-circus. As starting from jest@27 it uses jest-circus as default testrunner you must update jest.config.js and set:
+
+    testRunner: "jest-jasmine2"
 
 
 ### # jest -v >24 ?

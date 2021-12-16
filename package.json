@@ -4,7 +4,12 @@
   "description": "automation of dokan using jest",
   "main": "index.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest -w 1  " , 
+    "test:au": "jest -w 1  && allure serve",  
+    "test:rm": "rm -rf allure-results"  
+
+
+    
   },
   "keywords": [],
   "author": "",

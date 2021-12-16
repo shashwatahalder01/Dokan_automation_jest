@@ -11,6 +11,14 @@ module.exports = {
     testMatch: [
       "**/tests/**/*.test.js"
     ],
-    verbose: true,
-    reporters: ["default", "jest-allure"],
+    testTimeout: 60000,  // Timeout of a test in milliseconds. 
+    // maxWorkers: 1, // Specifies the maximum number of workers the worker-pool will spawn for running tests.
+    verbose: true,  // Show details of tests, if false show only summary 
+    testRunner: "jest-jasmine2",
+    // reporters: ["default", "jest-allure"],
+    setupFilesAfterEnv: ["jest-allure/dist/setup"]
+    // setupFilesAfterEnv: ["jest-allure/dist/setup"]
+    
   };
+
+  
