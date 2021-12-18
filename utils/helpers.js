@@ -3,10 +3,17 @@ module.exports = {
 
 
 //    async goto(url) {
-//         await page.goto(url, { waitUntil: 'networkidle2'});
+//     await page.goto(url, { waitUntil: 'load' });
+// await page.goto(url, { waitUntil: 'domcontentloaded' });
+// await page.goto(url, { waitUntil: 'networkidle0' });
+// await page.goto(url, { waitUntil: 'networkidle2' });
+// await page.goto(url, {'timeout': 10000, 'waitUntil':'load'});
+
 //         }
     
 // click = (selector) => {
+    // await page.waitForNavigation({waitUntil: 'networkidle0',});
+      
 //     await page.waitForSelector(selector)
 //     await page.click(selector)
 // },
