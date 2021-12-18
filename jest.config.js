@@ -1,4 +1,5 @@
 module.exports = {
+  
     // we specify jest-puppeteer preset, which will allow us to use Jest with Puppeteer
     preset: "jest-puppeteer",
     // In globals we declare variables, which will be available in our whole test suite
@@ -7,6 +8,9 @@ module.exports = {
         USERNAME: "",
         PASSWORD: "",
     },
+    // bail: 5, // for example: Stop running tests after `n` failures 
+    // testPathIgnorePatterns: ['/node_modules/', 'dist'],
+
     // In testMatch we are only saying in which folder and for which files Jest should be looking for.
     testMatch: [
       "**/tests/**/*.test.js"

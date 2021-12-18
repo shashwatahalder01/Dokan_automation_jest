@@ -1,0 +1,37 @@
+<?xml version='1.0'?>
+<ns2:test-suite xmlns:ns2='urn:model.allure.qatools.yandex.ru' start='1639816050124' stop='1639816116156'>
+    <name>vendor functionaly test</name>
+    <title>vendor functionaly test</title>
+    <test-cases>
+        <test-case start='1639816050125' status='passed' stop='1639816056040'>
+            <name>vendor login</name>
+            <title>vendor login</title>
+            <labels/>
+            <parameters/>
+            <steps/>
+            <attachments/>
+        </test-case>
+        <test-case start='1639816056040' status='failed' stop='1639816116156'>
+            <name>vendor logout</name>
+            <title>vendor logout</title>
+            <labels/>
+            <parameters/>
+            <steps/>
+            <attachments/>
+            <failure>
+                <message>Error: Protocol error (Page.navigate): Session closed. Most likely the page has been closed.</message>
+                <stack-trace>Error: Protocol error (Page.navigate): Session closed. Most likely the page has been closed.
+                    at CDPSession.send (/Users/shashwata/Desktop/weDevs/Dokan_automation_jest/node_modules/puppeteer/src/common/Connection.ts:282:9)
+                    at navigate (/Users/shashwata/Desktop/weDevs/Dokan_automation_jest/node_modules/puppeteer/src/common/FrameManager.ts:211:39)
+                    at FrameManager.navigateFrame (/Users/shashwata/Desktop/weDevs/Dokan_automation_jest/node_modules/puppeteer/src/common/FrameManager.ts:189:7)
+                    at Frame.goto (/Users/shashwata/Desktop/weDevs/Dokan_automation_jest/node_modules/puppeteer/src/common/FrameManager.ts:756:37)
+                    at Page.goto (/Users/shashwata/Desktop/weDevs/Dokan_automation_jest/node_modules/puppeteer/src/common/Page.ts:1766:49)
+                    at Object.&lt;anonymous> (/Users/shashwata/Desktop/weDevs/Dokan_automation_jest/tests/vendor.test.js:16:18)
+                    at Object.asyncJestLifecycle (/Users/shashwata/Desktop/weDevs/Dokan_automation_jest/node_modules/jest-jasmine2/build/jasmineAsyncInstall.js:113:37)
+                    at /Users/shashwata/Desktop/weDevs/Dokan_automation_jest/node_modules/jest-jasmine2/build/queueRunner.js:89:12
+                    at new Promise (&lt;anonymous>)
+                    at mapper (/Users/shashwata/Desktop/weDevs/Dokan_automation_jest/node_modules/jest-jasmine2/build/queueRunner.js:72:19)</stack-trace>
+            </failure>
+        </test-case>
+    </test-cases>
+</ns2:test-suite>

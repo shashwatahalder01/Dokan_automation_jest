@@ -1,7 +1,9 @@
 module.exports = {
+    
     launch: {
         headless: false, // Enable UI mode
         // slowMo: 250, // slow down by 250ms
+        slowMo: 10, // slow down by 250ms
 
 
         // headless: process.env.HEADLESS !== 'false',
@@ -17,8 +19,7 @@ module.exports = {
         // executablePath: "/Applications/Google Chrome", // Path to a browser executable 
 
         // args: ['--window-size=1920,1080'], // Browser windowsize
-        args: ['--start-maximized'], // Browser windowsize
-        // args: ['--start-fullscreen'], // Browser windowsize
+        args: ['--start-fullscreen'], // Browser windowsize
         // args: ['--start-maximized'], // Browser windowsize
         
         defaultViewport: null, //  Ignore default viewport size

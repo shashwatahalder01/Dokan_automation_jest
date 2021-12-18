@@ -1,4 +1,4 @@
-#  Dokan_automation_jest(e2e)
+#  Dokan_automation_Jest-Puppeteet(e2e)
 
 
 
@@ -103,7 +103,7 @@
 
 ## # Run Test Commands
 #### Run all tests
-    npm test or npm run test 
+    npm test or npm t or npm run test 
     npm run test:au // for custom tests , run word is mendatory
 #### Run single test
     Jest <path_of_the_test_file>
@@ -130,6 +130,7 @@ Jest-allure doesn't support jest-circus. As starting from jest@27 it uses jest-c
     setupFilesAfterEnv: ["jest-allure/dist/setup"]
 ### # jest -v < 24 ?
    Add reporter to jest.config.js
+        
     reporters: ["default", "jest-allure"],
 
 
