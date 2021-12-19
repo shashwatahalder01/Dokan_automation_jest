@@ -41,7 +41,7 @@ module.exports = {
         return count
     },
 
-    // get dropdowm options 
+    // get dropdowm options  span dropdown
     async getDropdownOptions(selector) {
         let elements = await page.$$(selector);
         let options = []
@@ -62,7 +62,7 @@ module.exports = {
     },
 
 
-    // set dropdown option
+    // set dropdown option  span dropdown
     async setDropdownOption(selector, value) {
         let elements = await page.$$(selector);
         for (let element of elements) {
@@ -74,6 +74,11 @@ module.exports = {
             }
         }
 
+    },
+
+    // or select dropdown
+    async setSelect(selector, value){
+        await page.select(selector, value)
     },
 
     // get value

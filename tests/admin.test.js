@@ -55,6 +55,17 @@ describe('admin functionaly test', () => {
 
     });
 
+    it('admin add categories', async () => {
+        await loginPage.adminlogin(process.env.ADMIN_EMAIL, process.env.ADMIN_PASSWORD)
+        await adminPage.addcategory()
+
+    });
+    it('admin add attributes', async () => {
+        await loginPage.adminlogin(process.env.ADMIN_EMAIL, process.env.ADMIN_PASSWORD)
+        await adminPage.addattributes()
+
+    });
+
 
 
 

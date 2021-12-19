@@ -8,7 +8,7 @@ module.exports = {
   // bail: 5, // for example: Stop running tests after `n` failures
   // testPathIgnorePatterns: ['/node_modules/', 'dist'],
   testMatch: ["**/tests/**/*.test.js"], // In testMatch we are only saying in which folder and for which files Jest should be looking for.
-  testTimeout: 60000, // Timeout of a test in milliseconds.
+  testTimeout: 300000, // Timeout of a test in milliseconds.
   // maxWorkers: 1, // Specifies the maximum number of workers the worker-pool will spawn for running tests.
   verbose: true, // Show details of tests, if false show only summary
   // testRunner: "jest-jasmine2", // test runner for allure report . after jest 24> jest-circus is default test runner.

@@ -4,6 +4,35 @@ const base = require("../pages/base.js");
 
 module.exports = {
 
+
+  productsName: ["Plain Cotton Tshirt", "The moon Thsirt", "Summer Thirt"],
+  prizes:[100,150,250],
+  tshirts: ["Plain Cotton Tshirt", "The moon Thsirt", "Summer Thirt"],
+  parentCategories: [
+    "Electronic Devices",
+    "Electronic Accessories",
+    "Men's Fashion",
+    "Clothings",
+    "Women's Fashion",
+  ],
+  productCategories: [
+    "SmartPhones",
+    "Laptops",
+    "Accessories",
+    "Shirts",
+    "T-Shirts",
+    "Polo Shirts",
+    "Jeans",
+    "Pants",
+    "Shoes",
+    "Bags",
+  ],
+  productAttributes: ["Size", "Color"],
+  attributeValues: [
+    ["S", "M", "L", "XL", "XXL"],
+    ["Red", "Blue", "Black", "Yellow", "White", "Deep blue"],
+  ],
+
     // locators
 
     // wp admin dashboard
@@ -166,8 +195,13 @@ module.exports = {
 
 
 
+    // dokan vendors
     dokan: 'a[class="wp-has-submenu wp-not-current-submenu menu-top toplevel_page_dokan menu-top-last"] div[class="wp-menu-name"]',
     vendors: 'a[href="admin.php?page=dokan#/vendors"]',
+    
+    // add new vendors
+    
+    addNewVendorClose: '.modal-close.modal-close-link.dashicons.dashicons-no-alt',
     addNewVendor: '.page-title-action',
     vendorPicture: 'div[class="picture"]',
     banner: 'div[class="dokan-upload-image"] button',
@@ -197,9 +231,9 @@ module.exports = {
     iban: '#iban',
     swift: '#swift',
     payPalEmail: '#paypal-email',
-    enableSelling: 'body > div:nth-child(3) > div:nth-child(2) > div:nth-child(2) > div:nth-child(1) > div:nth-child(9) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(7) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > section:nth-child(1) > div:nth-child(2) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > div:nth-child(2) > div:nth-child(2) > div:nth-child(2) > div:nth-child(1) > label:nth-child(1) > span:nth-child(2)',
-    publishProductDirectly: 'body > div:nth-child(3) > div:nth-child(2) > div:nth-child(2) > div:nth-child(1) > div:nth-child(9) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(7) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > section:nth-child(1) > div:nth-child(2) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > div:nth-child(2) > div:nth-child(2) > div:nth-child(3) > div:nth-child(1) > label:nth-child(1) > span:nth-child(2)',
-    makeVendorFeature: 'body > div:nth-child(3) > div:nth-child(2) > div:nth-child(2) > div:nth-child(1) > div:nth-child(9) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(7) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > section:nth-child(1) > div:nth-child(2) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > div:nth-child(2) > div:nth-child(2) > div:nth-child(4) > div:nth-child(1) > label:nth-child(1) > span:nth-child(2)',
+    enableSelling: 'div[class="dokan-form-group"] div:nth-child(2) div:nth-child(1) label:nth-child(1)',
+    publishProductDirectly: 'div[class="dokan-form-group"] div:nth-child(3) div:nth-child(1) label:nth-child(1)',
+    makeVendorFeature: 'div[class="dokan-form-group"] div:nth-child(4) div:nth-child(1) label:nth-child(1)',
     createVendor: '.button.button-primary.button-hero',
     addAnother: 'button[class="swal2-confirm swal2-styled"]',
     next: '.button.button-primary.button-hero',
@@ -260,7 +294,8 @@ module.exports = {
         await page.waitForTimeout(2000)
         await page.click(this.addNewVendor)
         await page.waitForTimeout(2000)
-        //
+        
+
         // account info
         // await page.click(this.addNewVendor)
         // await page.click(this.banner)
@@ -272,19 +307,20 @@ module.exports = {
         await page.type(this.vendorEmail, 'rk@gmail.com');
         await page.type(this.vendorUsername, 'rkvendor')
         await page.click(this.generatePassword);
-        await base.clearinputfield(this.vendorPassword)
-        await page.type(this.vendorPassword, '01rksh01');
+        await page.waitForTimeout(500);
+        await base.clearandtype(this.vendorPassword, '01rksh01');
         // await page.click(this.addressLink)
         await page.click(this.next)
         await page.waitForTimeout(2000)
 
         // address
-        await page.type(this.street1, 'New York');
-        // await page.type(this.street2, );
+        await page.type(this.street1, 'abc street');
+        // await page.type(this.street2, 'New York 2');
         await page.type(this.city, 'New York');
         await page.type(this.zip, '10001');
         await page.click(this.country);
         await page.type(this.countryInput, 'United States (US)');
+        await page.keyboard.press('Enter'); 
         await page.click(this.state);
         await page.type(this.state, 'New York');
         // await page.click(this.paymentOptionlink)
@@ -304,12 +340,71 @@ module.exports = {
         await page.click(this.publishProductDirectly)
         await page.click(this.makeVendorFeature)
 
-        // await page.click(this.createVendor)
-
-        await page.click(this.addAnother)
-        await page.waitForTimeout(2000)
+        await page.click(this.createVendor)
+        // await page.click(this.addAnother)
         await page.waitForTimeout(5000)
     },
+
+
+
+    async addproduct() {
+    await page.click(this.products);
+    await page.waitForTimeout(5000)
+    await page.click(this.addNew);
+    await page.waitForTimeout(5000)
+    // Simple product, Grouped product, External/Affiliate product, Variable product
+    for (let i = 0; i < this.productsName.length; i++) {
+      await page.type(this.productName, this.productsName[i]);
+      await page.waitForTimeout(500)
+      await page.type(this.regularPrice, this.prizes[i]);
+      
+      // await page.type(this.salePrice, category);
+      // await page.click(this.vendor);
+      await page.waitForTimeout(1000)
+      await page.click(this.publish);
+      await page.waitForTimeout(500)
+      await page.click(this.addNew);
+      await page.waitForTimeout(1000);
+    }
+  },
+
+  async addcategory() {
+    await page.click(this.products);
+    await page.waitForTimeout(5000)
+    await page.click(this.categories);
+    await page.waitForTimeout(5000)
+    for (category of this.productCategories) {
+      await page.type(this.categoryName, category);
+      await page.type(this.categorySlug, category);
+      await page.click(this.addNewCategory);
+      await page.waitForTimeout(2000);
+    }
+  },
+
+  // need to recheck
+  async addattributes() {
+    await page.click(this.products);
+    await page.waitForTimeout(5000)
+    await page.click(this.attributes);
+    await page.waitForTimeout(5000)
+    for (let i = 0; i < this.productAttributes.length; i++) {
+      await page.waitForTimeout(500);
+      await page.type(this.attributeName, this.productAttributes[i]);
+      await page.type(this.attributeSlug, this.productAttributes[i]);
+      await page.click(this.addAttribute);
+      // await page.waitForTimeout(1000)
+      await page.click(this.configureTerms(this.productAttributes[i]));
+
+      for (let j = 0; j < this.attributeValues[i].length; j++) {
+        await page.waitForTimeout(500);
+        await page.type(this.attributeValue, this.attributeValues[i][j]);
+        await page.type(this.attributeValueSlug, this.attributeValues[i][j]);
+        await page.click(this.addattributeValue);
+      }
+      await page.click(this.attributes);
+      // await page.waitForTimeout(1000)
+    }
+  },
 
 
 }

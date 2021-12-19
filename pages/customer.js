@@ -1,5 +1,5 @@
 
-
+const base = require("../pages/base.js");
 
 module.exports = {
 
