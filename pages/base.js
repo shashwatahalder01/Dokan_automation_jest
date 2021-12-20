@@ -77,7 +77,7 @@ module.exports = {
     },
 
     // or select dropdown
-    async setSelect(selector, value){
+    async setSelect(selector, value) {
         await page.select(selector, value)
     },
 
@@ -89,15 +89,40 @@ module.exports = {
     },
     // clear input field
     async clearinputfield(selector) {
-        await page.$eval(selector, el => el.value = ''); 
+        await page.$eval(selector, el => el.value = '');
     },
 
     // clear input field and type
     async clearandtype(selector, value) {
         await page.$eval(selector, el => el.value = '');
         await page.type(selector, value);
-        
+
     },
+
+
+    // close tab
+    async closetab() {
+
+        // Browser commands
+        // open new tab
+        await page.close()
+        // close browser or close all tab
+        await browser.close()
+
+
+        // get Title of a page
+        await page.title()
+        // Get url of current tab in puppeteer
+        await page.url()
+        // Content of page / Page Source
+        await page.content()
+
+        // for firefox
+        //TODO: npm install puppeteer-firefox​
+
+    },
+
+
 
 
 }
