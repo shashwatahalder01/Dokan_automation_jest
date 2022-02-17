@@ -1,10 +1,11 @@
 module.exports = {
+  // ...require( '@wordpress/scripts/config/jest-e2e.config' ),
   preset: "jest-puppeteer", // we specify jest-puppeteer preset, which will allow us to use Jest with Puppeteer
-  globals: {
-    URL: "https://www.google.com/",
-    USERNAME: "",
-    PASSWORD: "",
-  }, // In globals we declare variables, which will be available in our whole test suite
+  // globals: {
+  //   URL: "https://www.google.com/",
+  //   USERNAME: "",
+  //   PASSWORD: "",
+  // }, // In globals we declare variables, which will be available in our whole test suite
   // bail: 5, // for example: Stop running tests after `n` failures
   // testPathIgnorePatterns: ['/node_modules/', 'dist'],
   testMatch: ["**/tests/**/*.test.js"], // In testMatch we are only saying in which folder and for which files Jest should be looking for.

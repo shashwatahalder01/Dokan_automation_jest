@@ -1,4 +1,5 @@
 
+const puppeteer = require('puppeteer');
 // This page contains all necessary puppeteer automation methods 
 module.exports = {
 
@@ -122,7 +123,15 @@ module.exports = {
 
     },
 
-
+    async opennewtab(){
+        const browser = await puppeteer.launch()
+        const page = await browser.newPage()
+   
+        // await browser.newPage(); 
+        // const page2 = await browser.newPage();        // open new tab
+        // await page2.bringToFront(); 
+        // const page = page2
+    },
 
 
 }
